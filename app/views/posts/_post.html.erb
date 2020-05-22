@@ -34,15 +34,18 @@
         <% end %>
       <% end %>
     </div>
+
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">
         <span class="glyphicon glyphicon-heart-empty"></span>
       </div>
       <div class="comment-form col-sm-11">
-        <%= form_for [post, post.comments.new] do |f| %>
+        <%= form_for([post, post.comments.build]) do |f| %>
           <%= f.text_field :content, placeholder: 'Add a comment...' %>
         <% end %>
       </div>
     </div>
+
+
   </div>
 </div>
