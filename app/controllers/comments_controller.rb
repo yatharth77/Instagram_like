@@ -17,8 +17,9 @@ class CommentsController < ApplicationController
 	def create
 	    @comment = @post.comments.build(comment_params)
 	    @comment.user_id = current_user.id
-
+	    
 	    if @comment.save
+	    	# logger.info "Processing the request..."
 	      respond_to do |format|
 	        format.html { redirect_to root_path }
 	        format.js
