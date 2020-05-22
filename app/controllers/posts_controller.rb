@@ -48,22 +48,23 @@ class PostsController < ApplicationController
 		@posts = Post.all
 		end
 
-		def show
+	def show
 
-		end
-
-		def new
-		@post = Post.new
 	end
 
+	def new
+    	@post = current_user.posts.build
+ 	end
+
 	def create
-		if @post = Post.create(post_params)
-		  flash[:success] = "Your post has been created!"
-		  redirect_to posts_path
-		else
-		  flash.now[:alert] = "Your new post couldn't be created!  Please check the form."
-		  render :new
-		end
+		@post = current_user.posts.build(post_params)
+	    if @post.save
+	      flash[:success] = "Your post has been created!"
+	      redirect_to posts_path
+	    else
+	      flash[:alert] = "Your new post couldn't be created!  Please check the form."
+	      render :new
+	    end
 	end
 
 	def edit
