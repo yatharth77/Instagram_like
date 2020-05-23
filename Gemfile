@@ -23,7 +23,7 @@ gem 'bootstrap-sass'
 gem 'sassc-rails'
 gem 'jquery-rails'
 gem 'devise'
-
+gem 'jquery-turbolinks'
 gem 'will_paginate'
 gem 'betterlorem'
 gem 'bootstrap-will_paginate'

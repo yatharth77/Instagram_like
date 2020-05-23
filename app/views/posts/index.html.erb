@@ -1,8 +1,24 @@
-<div class="posts-wrapper row">
-  <% @posts.each do |post| %>
-  <%= render 'post', post: post %>
+<div class="posts-wrapper row" id="posts">
+  <%= render @posts %>
+</div>
+<%= will_paginate @posts %>
+
+
+
+
+
+<% if false %>
+
+
+	this portion is commented. This is another way of rendering all post.
+
+	
+	<div class="posts-wrapper row" id="all_posts">
+	  <% @posts.each do |post| %>
+	  <%= render 'post', post: post %>
+	<% end %>
+	</div>
+	<%= will_paginate @posts%>
+
+
 <% end %>
-<div id="infinite-scrolling">
-  <%= will_paginate @posts%>
-</div>
-</div>
