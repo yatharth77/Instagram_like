@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+	self.per_page = 10
 	belongs_to :user
 	validates :user_id, presence: true
 	validates :image, presence: true

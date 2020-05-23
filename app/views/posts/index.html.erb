@@ -2,5 +2,7 @@
   <% @posts.each do |post| %>
   <%= render 'post', post: post %>
 <% end %>
-
+<div id="infinite-scrolling">
+  <%= will_paginate @posts%>
+</div>
 </div>

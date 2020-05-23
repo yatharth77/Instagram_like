@@ -46,7 +46,7 @@ class PostsController < ApplicationController
 	before_action :owned_post, only: [:edit, :update, :destroy]
 	
 	def user_profile
-		@this_user_post = Post.where(user_id: params[:id])
+		@this_user_post = Post.where(user_id: params[:id]).order(created_at: :desc).paginate(page:  params[:page], per_page: 2)
 		if @this_user_post.empty?
 			flash[:alert] = "No such user"
 			redirect_back fallback_location: root_path
@@ -54,8 +54,8 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all
-		end
+		@posts = Post.all.order(created_at: :desc).paginate(page:  params[:page], per_page: 2)
+	end
 
 	def show
 
