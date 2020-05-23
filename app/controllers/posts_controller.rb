@@ -44,9 +44,26 @@ class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!
 	before_action :owned_post, only: [:edit, :update, :destroy]
-	def index
-		@posts = Post.all
+	
+	def user_profile
+		@this_user_post = Post.where(user_id: params[:id]).paginate(page:  params[:page], per_page: 2)
+		if @this_user_post.empty?
+			flash[:alert] = "No such user"
+			redirect_back fallback_location: root_path
 		end
+		respond_to do |format|
+			format.html
+		   	format.js
+		 end
+	end
+
+	def index
+		@posts = Post.all.order(created_at: :desc).paginate(page:  params[:page], per_page: 2)
+		respond_to do |format|
+			format.html
+		   	format.js
+		 end
+	end
 
 	def show
 

@@ -1,0 +1,5 @@
+var ele = document.createElement("DIV");
+ele.innerHTML = "<%=j render 'comments/comment', post: @post, comment: @comment %>";
+document.getElementById(`comments_<%= @post.id %>`).append(ele);
+// document.getElementById('comment_content_<%= @post.id %>').innerHTML = " ";
+document.getElementsByClassName("comment_content").innerHTML ="";

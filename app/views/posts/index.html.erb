@@ -1,19 +1,24 @@
-<div class="posts-wrapper row">
-  <% @posts.each do |post| %>
-    <div class="post">
-      <div class="post-head">
-        <div class="name">
-          <%= post.user.user_name %>
-        </div>
-      </div>
-      <div class="image center-block">
-        <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
-        
-      </div>
-      <p class="caption">
-        <%= post.caption %>
-      </p>
-    </div>
-  <% end %>
+<div class="posts-wrapper row" id="posts">
+  <%= render @posts %>
 </div>
+<%= will_paginate @posts %>
 
+
+
+
+
+<% if false %>
+
+
+	this portion is commented. This is another way of rendering all post.
+
+	
+	<div class="posts-wrapper row" id="all_posts">
+	  <% @posts.each do |post| %>
+	  <%= render 'post', post: post %>
+	<% end %>
+	</div>
+	<%= will_paginate @posts%>
+
+
+<% end %>

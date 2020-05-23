@@ -1,0 +1,6 @@
+$('#user_posts').append('<%= escape_javascript render(@this_user_post) %>');
+<% if @this_user_post.next_page %>
+	$('.pagination').replaceWith('<%= escape_javascript will_paginate(@this_user_post) %>');
+<% else %>
+	$('.pagination').remove();
+<% end %>
