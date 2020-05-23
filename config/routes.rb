@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 	end
 
   	root 'posts#index'
+
+	get '/user_profile/:id', to: 'posts#user_profile', as: 'user_profile'
 end

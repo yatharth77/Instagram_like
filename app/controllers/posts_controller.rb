@@ -44,6 +44,15 @@ class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!
 	before_action :owned_post, only: [:edit, :update, :destroy]
+	
+	def user_profile
+		@this_user_post = Post.where(user_id: params[:id])
+		if @this_user_post.empty?
+			flash[:alert] = "No such user"
+			redirect_back fallback_location: root_path
+		end
+	end
+
 	def index
 		@posts = Post.all
 		end
